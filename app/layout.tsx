@@ -1,36 +1,31 @@
+// This is the root layout component for your Next.js app.
+// Learn more: https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
+import { IBM_Plex_Mono } from 'next/font/google'
+import { cn } from '@/lib/utils'
 import './globals.css'
 
-import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
-
-const serif = PT_Serif({
-  variable: '--font-serif',
-  style: ['normal', 'italic'],
+const fontHeading = IBM_Plex_Mono({
   subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-heading',
   weight: ['400', '700'],
 })
-const sans = Inter({
-  variable: '--font-sans',
+
+const fontBody = IBM_Plex_Mono({
   subsets: ['latin'],
-  // @todo: understand why extrabold (800) isn't being respected when explicitly specified in this weight array
-  // weight: ['500', '700', '800'],
-})
-const mono = IBM_Plex_Mono({
-  variable: '--font-mono',
-  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
   weight: ['500', '700'],
 })
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function Layout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${mono.variable} ${sans.variable} ${serif.variable}`}
-    >
-      <body>{children}</body>
+    <html lang="en">
+      <body
+        className={cn('antialiased', fontHeading.variable, fontBody.variable)}
+      >
+        {children}
+      </body>
     </html>
   )
 }

@@ -51,19 +51,17 @@ export default async function IndexRoute({
 }) {
   return (
     <>
-      <div className="flex min-h-screen flex-col bg-white text-black">
+      <div className="flex flex-col min-h-[100dvh]">
         <Suspense>
           <Navbar />
         </Suspense>
-        <div className="mt-20 flex-grow px-4 md:px-16 lg:px-32">
-          <Suspense>{children}</Suspense>
-        </div>
+        <Suspense>{children}</Suspense>
         <Suspense>
           <Footer />
         </Suspense>
-        <Suspense>
+        {/* <Suspense>
           <IntroTemplate />
-        </Suspense>
+        </Suspense> */}
       </div>
       {draftMode().isEnabled && <LiveVisualEditing />}
     </>
